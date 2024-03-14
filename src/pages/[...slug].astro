@@ -1,22 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const currentPath = Astro.url.pathname;
-const canonicalURL = new URL(Astro?.url?.origin) + currentPath;
-const slug = Astro.params;
 
-console.log('slug', slug)
+// @ts-ignore
+console.log(Astro.url)
+const currentPath = Astro.url.pathname;
+const canonicalURL = new URL(Astro?.url?.host + Astro.url.pathname );
 console.log('canonical', canonicalURL)
 
-
+// @ts-ignore
 export function getStaticPaths() {
-
   return [
     {params: { slug: 'test' }}
   ];
 }
 
-
-// console.log(slug)
 ---
 
 <Layout title={currentPath}>
@@ -24,5 +21,8 @@ export function getStaticPaths() {
         <h1 class="text-white">The current URL is: {Astro.url}</h1>
         <h1 class="text-white">The current URL pathname is: {Astro.url.pathname}</h1>
         <h1 class="text-white">The current URL origin is: {Astro.url.origin}</h1>
+
+        <br />
+        <p class="text-white">Go Back <a href="/">Home</a>.</p>
     </main>
 </Layout>  
