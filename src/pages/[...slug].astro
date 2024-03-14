@@ -16,7 +16,7 @@ export function getStaticPaths() {
 
 ---
 
-<Layout title={currentPath}>
+<Layout title={currentPath.replace(/^\/+/g, '').toUpperCase()}>
 	<main>
         <h1 class="text-white">The current URL is: {Astro.url}</h1>
         <h1 class="text-white">The current URL pathname is: {Astro.url.pathname}</h1>
